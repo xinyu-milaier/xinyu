@@ -30,15 +30,18 @@
           </Col>
         </Row>
       </div>
-      <Table stripe :columns="queryTableColumns" :data="queryTableData"></Table>
+
+      <Row width="auto">
+      <div width="auto"><i-table stripe highlight-row border :columns="queryTableColumns" :data="queryTableData" width="auto"></i-table></div>
+      
       <div class="page-choose">
         <Page :total="pageTotal" @on-change="aliveChange"></Page>
       </div>
+      </Row>
     </div>
 
     </div>
     
-  </div>
 </template>
 
 
@@ -49,7 +52,7 @@
 export default {
   data () {
     return {
-      numberList: [10, 20, 40, 60, 80, 100],
+      numberList: [5, 15, 40, 60, 80, 100],
       query: '',
       queryTableColumns: [
         {
@@ -65,17 +68,8 @@ export default {
           title: '创建人'
         },
         {
-          key: 'create_time',
-          title: '创建时间'
-        },
-        {
-          key: 'update_time',
-          title: '更新时间'
-        },
-        {
           title: '操作',
           key: 'action',
-          width: 150,
           align: 'center',
           render: (h, params) => {
               return h('div', [
@@ -95,7 +89,7 @@ export default {
                   }, '查看'),
                   h('Button', {
                       props: {
-                          type: 'info',
+                          type: 'warning',
                           size: 'small'
                       },
                       on: {
@@ -103,7 +97,7 @@ export default {
                               this.remove(params.index)
                           }
                       }
-                  }, '搜索')
+                  }, '使用')
               ]);
           }
         }
@@ -115,23 +109,63 @@ export default {
           id: 1,
           query_key: '音乐',
           creator: 'liuxinyu',
-          create_time: '2017-07-01',
-          update_time: '2017-07-02',
       },
        {
           id: 2,
           query_key: '图片',
           creator: 'liuxinyu',
-          create_time: '2017-07-01',
-          update_time: '2017-07-02',
       },
        {
           id: 3,
           query_key: '电影',
           creator: 'liuxinyu',
-          create_time: '2017-07-01',
-          update_time: '2017-07-02',
       },
+      {
+          id: 3,
+          query_key: '音乐',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '图片',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '电影',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '音乐',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '图片',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '电影',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '电影',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '电影',
+          creator: 'liuxinyu',
+      },
+      {
+          id: 3,
+          query_key: '电影',
+          creator: 'liuxinyu',
+      },
+
 
                     
 
@@ -194,7 +228,7 @@ export default {
      show (index) {
                 this.$Modal.info({
                     title: 'query信息',
-                    content: `序号：${this.queryTableData[index].id}<br>query关键字：${this.queryTableData[index].query_key}<br>创建人：${this.queryTableData[index].creator}<br>创建时间：${this.queryTableData[index].create_time}<br>更新时间：${this.queryTableData[index].update_time}`
+                    content: `序号：${this.queryTableData[index].id}<br>query关键字：${this.queryTableData[index].query_key}<br>创建人：${this.queryTableData[index].creator}`
                 })
             },
             remove (index) {
@@ -205,7 +239,7 @@ export default {
 </script>
 <style lang="less" scoped>
 .table-item{
-  margin: 20px 0;
+  margin-right: 10px;
 
   p:first-child{
     font-size: 18px;
@@ -216,7 +250,7 @@ export default {
   .page-choose{
     float: right;
     overflow: hidden;
-    margin: 10px 0;
+    margin: 8px 0;
   }
 
   .item-name{
@@ -224,6 +258,7 @@ export default {
     font-weight: bold;
     padding: 0 10px;
   }
+
 }
 
 .row-margin{

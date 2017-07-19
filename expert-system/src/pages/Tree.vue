@@ -1,145 +1,73 @@
 <template>
-  <div>
-    <div class="table-item">
-      <p>query问答</p>
-      <div>
-        <Row :gutter="16" class="row-margin">
-          <Col span="6">
-            <Date-picker 
-              v-model="aliveDate" 
-              type="datetimerange" 
-              placement="bottom-start" 
-              placeholder="选择日期" 
-              :options="options"
-              @on-change="aliveTimeControl"/>
-          </Col>
-          <Col span="4">
-            <span class="item-name">appId</span>
-            <Input v-model="aliveAppId" placeholder="请输入appId" style="width:110px"></Input>
-          </Col>
-          <Col span="6">
-            <span class="item-name">logId</span>
-            <Input v-model="aliveLogId" placeholder="请输入logId" style="width:110px"></Input>
-          </Col>
-          <Col span="3">
-            <Button type="primary" icon="ios-search" @click="searchAlive">查询</Button>
-          </Col>
-        </Row>
-      </div>
-      <Table stripe :columns="aliveTableClomuns" :data="aliveTableData"></Table>
-      <div class="page-choose">
-        <Page :total="aliveTotal" @on-change="aliveChange"></Page>
-      </div>
-    </div>
-
-    </div>
-    
-  </div>
+  <!--为echarts准备一个具备大小的容器dom-->
+  <div id="myChart" :style="{width: '300px', height: '300px'}"></div>
 </template>
+
 <script>
+// 引入基本模板
+let echarts = require('echarts/lib/echarts')
+// 引入树图组件
+require('echarts/lib/chart/tree')
+// 引入提示框和title组件
+require('echarts/lib/component/tooltip')
+require('echarts/lib/component/title')
+
 export default {
+  name: 'Tree',
   data () {
     return {
-      aliveDate: [
-        new Date().getTime() - 7 * 24 * 60 * 60 * 1000,
-        new Date()
-      ],
-      aliveAppId: '',
-      aliveLogId: '',
-      aliveTableClomuns: [
-        {
-          key: 'id',
-          title: 'id'
+      charts: '',
+      option : {
+        title : {
+            text: '树图',
+            subtext: '虚构数据'
         },
-        {
-          key: 'err_type',
-          title: 'err_type'
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
         },
-        {
-          key: 'status',
-          title: 'status'
-        },
-        {
-          key: 'logid',
-          title: 'logid'
-        },
-        {
-          key: 'app_service_id',
-          title: 'app_service_id'
-        },
-        {
-          key: 'app_id',
-          title: 'app_id'
-        },
-        {
-          key: 'app_name',
-          title: 'app_name'
-        },
-        {
-          key: 'update_time',
-          title: 'update_time'
+        calculable : false,
+
+        
         }
-      ],
-      aliveTableData: [],
-      aliveTotal: 1,
-      aliveData: [],
-      qpsDate: [
-        new Date().getTime() - 7 * 24 * 60 * 60 * 1000,
-        new Date()
-      ],
-      qpsAppId: '',
-      qpsUserId: '',
-      qpsTableClomuns: [
-        {
-          key: 'app_id',
-          title: 'app_id'
-        },
-        {
-          key: 'id',
-          title: 'id'
-        },
-        {
-          key: 'qps',
-          title: 'qps'
-        },
-        {
-          key: 'request_timestamp',
-          title: 'request_timestamp'
-        },
-        {
-          key: 'status',
-          title: 'status'
-        },
-        {
-          key: 'threshold',
-          title: 'threshold'
-        },
-        {
-          key: 'update_time',
-          title: 'update_time'
-        },
-        {
-          key: 'user_id',
-          title: 'user_id'
-        }
-      ],
-      qpsTableData: [],
-      qpsTotal: 1,
-      qpsData: [],
-      options: {
-        disabledDate (date) {
-          return date >= new Date()
-        }
-      },
-      date: [
-        new Date().getTime() - 7 * 24 * 60 * 60 * 1000,
-        new Date()
-      ]
+                    
     }
   },
   methods: {
+    drawTree() {
+       // 基于准备好的dom，初始化echarts实例
+      let myChart = this.$echarts.init(document.getElementById('myChart'))
+        // 绘制树
+        myChart.setOption({
+        title: { text: 'ECharts 入门示例' },
+        tooltip: {},
+        xAxis: {
+          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+        },
+        yAxis: {},
+        series: [{
+          name: '销量',
+          type: 'bar',
+          data: [5, 20, 36, 10, 10, 20]
+        }]
+      });
+
+    }
+  },
+
+  mounted () {
+    let myChart = this.$echarts.init(document.getElementById('myChart'))
+    myChart.setOption(options)
+    this.drawTree();
+
   }
 }
+
 </script>
 <style lang="less" scoped>
 .table-item{

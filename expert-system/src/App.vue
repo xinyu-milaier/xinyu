@@ -1,191 +1,315 @@
 <style scoped>
-    .layout{
-        border: 1px solid #d7dde4;
-        background: #f5f7f9;
-        position: relative;
-        overflow: hidden;
-    }
-    .layout-breadcrumb{
-        padding: 5px 15px 0;
-        background: #fff;
-        border-radius: 4px;
-        border-bottom: 1px solid #cfcfcf;
-    }
 
+  @import "/static/simplify/bootstrap/css/bootstrap.min.css";
+	
+	@import "/static/simplify/css/font-awesome.min.css";
 
-    .layout-content{
-        min-height: 635px;
-     
-        overflow: hidden;
-        background: #e4e4e4;
-        border-radius: 4px;
-    }
-    .layout-content-main{
-        padding: 10px;
+	@import "/static/simplify/css/ionicons.min.css";
+	
+	@import "/static/simplify/css/simplify.min.css";
 
-    }
-    .layout-copy{
-        text-align: center;
+.layout-copy{
         padding: 0 0 5px;
         color: #9ea7b4;
-    }
-    .layout-menu-left{
-        background: #464c5b;
+        position: flex;
+        bottom: 0;
+        margin-bottom: 5px;
+        margin-left: 570px;
 
-    }
-    .layout-header{
-        height: 60px;
-        background: #1b1b1b;
-        box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    }
-
-    .layout-header-right{
-        height: 60px;
-        background: #1b1b1b;
-        font-size: 13px;
-        padding: 20px 8px 5px;
-    }
-
-    .layout-logo-left{
-        width: 100%;
-        height: 60px;
-        font-size: 35px;
-        color: #a8a8a8;
-        background: #1b1b1b;
-        border-radius: 0px;
-        margin: 0px auto;
-        text-align: center;
-    }
-    .layout-ceiling-main a{
-        color: #9ba7b5;
-    }
-    .layout-hide-text .layout-text{
-        display: none;
-      }
-      .ivu-col{
-        transition: width .2s ease-in-out;
     }
 
 </style>
-<template>
-    <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
-        <Row type="flex">
-            <i-col span="spanLeft" class="layout-menu-left">
-                <Menu :active-name="$route.name" theme="dark" width="auto" :open-names="['1']">
-                    <div class="layout-logo-left">Expert System</div>
-                    <Submenu name="1">
-                        <template slot="title">
-                            <Icon type="ios-navigate" :size="iconSize"></Icon>
-                            用户
-                        </template>
-                        
-                        <router-link to="query">
-                          <Menu-item name="query">
-                            query列表查询
-                          </Menu-item>
-                        </router-link>
+<template>	
+  	<div class="overflow-hidden">
+		<div class="wrapper preload">
+			<div class="sidebar-right">
+				<div class="sidebar-inner scrollable-sidebar">
+					<div class="sidebar-header clearfix">
+						<input class="form-control dark-input" placeholder="Search" type="text">
+						<div class="btn-group pull-right">
+							<a href="#" class="sidebar-setting" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
+							<ul class="dropdown-menu pull-right flipInV">
+								<li><a href="#"><i class="fa fa-circle text-danger"></i><span class="m-left-xs">Busy</span></a></li>
+								<li><a href="#"><i class="fa fa-circle-o"></i><span class="m-left-xs">Turn Off Chat</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- sidebar-inner -->
+			</div><!-- sidebar-right -->
 
-                        <router-link to="tree">
-                          <Menu-item name="tree">
-                            query问答
-                          </Menu-item>
-                        </router-link>
+			<header class="top-nav">
+				<div class="top-nav-inner">
+					<div class="nav-header">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleSM">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						
+						<ul class="nav-notification pull-right">
+							<li>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
+								<span class="badge badge-danger bounceIn">1</span>
+								<ul class="dropdown-menu dropdown-sm pull-right">
+									<li class="user-avatar">
+										<img src="/static/profile2.jpg" alt="" class="img-circle">
+										<div class="user-content">
+											<h5 class="no-m-bottom">John Doe</h5>
+											<div class="m-top-xs">
+												<a href="profile.html" class="m-right-sm">Profile</a>
+												<a href="signin.html">Log out</a>
+											</div>
+										</div>
+									</li>	  
+									<li>
+										<a href="inbox.html">
+											Inbox
+											<span class="badge badge-danger bounceIn animation-delay2 pull-right">1</span>
+										</a>
+									</li>			  
+									<li>
+										<a href="#">
+											Notification
+											<span class="badge badge-purple bounceIn animation-delay3 pull-right">2</span>
+										</a>
+									</li>			  
+									<li>
+										<a href="#" class="sidebarRight-toggle">
+											Message
+											<span class="badge badge-success bounceIn animation-delay4 pull-right">7</span>
+										</a>
+									</li>			  	  
+									<li class="divider"></li>
+									<li>
+										<a href="#">Setting</a>
+									</li>			  	  
+								</ul>
+							</li>
+						</ul>
+						
+            <router-link  to="shouye">
+						<div class="brand" style="padding-left: 0px; padding-right: 0px; height: 53px">
+							<img src = "/static/weibo.jpg" width="18%" height="70%" style="vertical-align: middle" />
+              <span class="brand-name" style="margin-left: 0px; font-size: 25px;">Expert System</span>
+						</div>
+            </router-link>
+					</div>
+					<div class="nav-container">
+						<button type="button" class="navbar-toggle pull-left sidebar-toggle" id="sidebarToggleLG">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<ul class="nav-notification">	
+							<li class="search-list">
+								<div class="search-input-wrapper">
+									<div class="search-input">
+										<input type="text" class="form-control input-sm inline-block">
+										<a href="#" class="input-icon text-normal"><i class="ion-ios7-search-strong"></i></a>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="pull-right m-right-sm">
+							<div class="user-block hidden-xs">
+								<a href="#" id="userToggle" data-toggle="dropdown">
+									<img src="/static/profile2.jpg" alt="" class="img-circle inline-block user-profile-pic">
+									<div class="user-detail inline-block">
+										Xinyu26
+										<i class="fa fa-angle-down"></i>
+									</div>
+								</a>
+								<div class="panel border dropdown-menu user-panel">
+									<div class="panel-body paddingTB-sm">
+										<ul>
+											<li>
+												<a href="profile.html">
+													<i class="fa fa-edit fa-lg"></i><span class="m-left-xs">My Profile</span>
+												</a>
+											</li>
+											<li>
+												<a href="inbox.html">
+													<i class="fa fa-inbox fa-lg"></i><span class="m-left-xs">Inboxes</span>
+													<span class="badge badge-danger bounceIn animation-delay3">2</span>
+												</a>
+											</li>
+											<li>
+												<a href="signin.html">
+													<i class="fa fa-power-off fa-lg"></i><span class="m-left-xs">Sign out</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<ul class="nav-notification">
+								
+								<li>
+									<a href="#" data-toggle="dropdown"><i class="fa fa-bell fa-lg"></i></a>
+									<span class="badge badge-info bounceIn animation-delay6 active">4</span>
+									<ul class="dropdown-menu notification dropdown-3 pull-right">
+										<li><a href="#">You have 5 new notifications</a></li>					  
+										<li>
+											<a href="#">
+												<span class="notification-icon bg-warning">
+													<i class="fa fa-warning"></i>
+												</span>
+												<span class="m-left-xs">Server #2 not responding.</span>
+												<span class="time text-muted">Just now</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="notification-icon bg-success">
+													<i class="fa fa-plus"></i>
+												</span>
+												<span class="m-left-xs">New user registration.</span>
+												<span class="time text-muted">2m ago</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="notification-icon bg-danger">
+													<i class="fa fa-bolt"></i>
+												</span>
+												<span class="m-left-xs">Application error.</span>
+												<span class="time text-muted">5m ago</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="notification-icon bg-success">
+													<i class="fa fa-usd"></i>
+												</span>
+												<span class="m-left-xs">2 items sold.</span>
+												<span class="time text-muted">1hr ago</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="notification-icon bg-success">
+													<i class="fa fa-plus"></i>
+												</span>
+												<span class="m-left-xs">New user registration.</span>
+												<span class="time text-muted">1hr ago</span>
+											</a>
+										</li>
+										<li><a href="#">View all notifications</a></li>					  
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- ./top-nav-inner -->	
+			</header>
+			<aside class="sidebar-menu fixed">
+				<div class="sidebar-inner scrollable-sidebar" >
+					<div class="main-menu">
+						<ul class="accordion">
+							<li class="menu-header">
+								Main Menu
+							</li>
+              <li class="bg-palette1">
+                <router-link  to="shouye">
+                  <span class="menu-content block">
+                    <span class="menu-icon"><i class="block fa fa-home fa-lg"></i></span>
+                    <span class="text m-left-sm" style="font-size: 15px">首页</span>
+                  </span>
+                  <span class="menu-content-hover block">
+                    Home
+                  </span>
+                </router-link>
+              </li>
+							<li class="openable bg-palette3">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-list fa-lg"></i></span>
+										<span class="text m-left-sm" style="font-size: 15px">用户</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										Form
+									</span>
+								</a>
+								<ul class="submenu bg-palette4" >
+									<li><router-link to="query"><span class="submenu-label"  style="font-size: 13px">query列表</span></router-link></li>
+									<li><router-link to="answer"><span class="submenu-label" style="font-size: 13px" >query问答</span></a></router-link></li>
+									<li><router-link to="feedback"><span class="submenu-label"  style="font-size: 13px">反馈</span></a></router-link></li>
+								</ul>
+							</li>
+							<li class="openable bg-palette4">
+								<a href="#">
+									<span class="menu-content block">
+										<span class="menu-icon"><i class="block fa fa-tags fa-lg"></i></span>
+										<span class="text m-left-sm" style="font-size: 15px">专家</span>
+										<span class="submenu-icon"></span>
+									</span>
+									<span class="menu-content-hover block">
+										UI Kits
+									</span>
+								</a>
+								<ul class="submenu">
+									<li><router-link to="addTree"><span class="submenu-label" style="font-size: 13px">添加树</span></router-link></li>
+									<li><router-link to="todoList"><span class="submenu-label" style="font-size: 13px">反馈待办</span></router-link></li>
+									
+								</ul>
+							</li>
 
-                        <router-link to="feedback">
-                          <Menu-item name="feedback">
-                            反馈
-                          </Menu-item>
-                        </router-link>
+						</ul>
+					</div>	
+					<div class="sidebar-fix-bottom clearfix">
+						<div class="user-dropdown dropup pull-left">
+							<a href="#" class="dropdwon-toggle font-18" data-toggle="dropdown"><i class="ion-person-add"></i>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="inbox.html">
+										Inbox
+										<span class="badge badge-danger bounceIn animation-delay2 pull-right">1</span>
+									</a>
+								</li>			  
+								<li>
+									<a href="#">
+										Notification
+										<span class="badge badge-purple bounceIn animation-delay3 pull-right">2</span>
+									</a>
+								</li>			  
+								<li>
+									<a href="#" class="sidebarRight-toggle">
+										Message
+										<span class="badge badge-success bounceIn animation-delay4 pull-right">7</span>
+									</a>
+								</li>			  	  
+								<li class="divider"></li>
+								<li>
+									<a href="#">Setting</a>
+								</li>			  	  
+							</ul>
+						</div>
+						<a href="lockscreen.html" class="pull-right font-18"><i class="ion-log-out"></i></a>
+					</div>
+				</div><!-- sidebar-inner -->
+			</aside>
+			
+			<div class="main-container">
+				<div class="padding-md">
+					<router-view/>
+				</div><!-- ./padding-md -->
+			</div><!-- /main-container -->
+		</div><!-- /wrapper -->
+    
 
-                    </Submenu>
-                    <Submenu name="2">
-                        <template slot="title">
-                            <Icon type="ios-keypad" :size="iconSize"></Icon>
-                            专家
-                        </template>
-                        <Menu-item name="2-1">选项 1</Menu-item>
-                        <Menu-item name="2-2">选项 2</Menu-item>
-                    </Submenu>
-                    <Submenu name="3">
-                        <template slot="title">
-                            <Icon type="ios-analytics" :size="iconSize"></Icon>
-                            导航三
-                        </template>
-                        <Menu-item name="3-1">选项 1</Menu-item>
-                        <Menu-item name="3-2">选项 2</Menu-item>
-                    </Submenu>
-                </Menu>
-            </i-col>
-            <i-col span="spanRight">
-                <Row justify="center">
-                  <i-col span="22">
-                    <div class="layout-header">
-                      <i-button type="text" @click="toggleClick">
-                        <Icon type="navicon" size="32"></Icon>
-                    </i-button>
-                    </div>
-                  </i-col>
-                  <i-col span="2" class="layout-header-right">
-                     <Icon size="20" type="person" color="#a8a8a8"></Icon>
-                     <div style="float:right">
-                      <span><a href="#" style="color:#a8a8a8">登录&nbsp/&nbsp注册</a></span>
-                     </div>
-                  </i-col>
-                </Row>
-                
-
-                <Row class="layout-breadcrumb">
-                <i-col span="22">
-                <div >
-                    <Breadcrumb>
-                        <Breadcrumb-item href="#">首页</Breadcrumb-item>
-                        <Breadcrumb-item href="#">应用中心</Breadcrumb-item>
-                        <Breadcrumb-item>某应用</Breadcrumb-item>
-                    </Breadcrumb>
-                  </div>
-                  </i-col>
-                  <i-col span="2">
-                 
-                    
-                  </i-col>
-                  </Row>
-                
-                <div class="layout-content">
-                    <div class="layout-content-main">
-                      <router-view/>
-                    </div>
-                </div>
-                <div class="layout-copy">
+		<a href="#" class="scroll-to-top hidden-print"><i class="fa fa-chevron-up fa-lg"></i></a>
+		<!--
+    			<div class="layout-copy">
                     Copyright &copy; 2009-2017 WEIBO 北京微梦创科网络技术有限公司
                 </div>
-            </i-col>
-        </Row>
-    </div>
-</template>
-<script>
+                -->
+	</div>
+
+	</template>
+
+	<script>
     export default {
-      data () {
-            return {
-                spanLeft: 4,
-                spanRight: 20
-            }
-        },
-        computed: {
-            iconSize () {
-                return this.spanLeft === 4 ? 14 : 24;
-            }
-        },
-        methods: {
-            toggleClick () {
-                if (this.spanLeft === 4) {
-                    this.spanLeft = 2;
-                    this.spanRight = 22;
-                } else {
-                    this.spanLeft = 4;
-                    this.spanRight = 20;
-                }
-            }
-        }
-        
     }
-</script>
+	</script>
